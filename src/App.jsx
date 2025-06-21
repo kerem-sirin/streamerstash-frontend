@@ -4,8 +4,9 @@ import HomePage from './pages/HomePage';
 import BrowsePage from './pages/BrowsePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import AboutPage from './pages/AboutPage'; // 1. Import
-import ContactPage from './pages/ContactPage'; // 1. Import
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import ProductDetailPage from './pages/ProductDetailPage';
 
 const router = createBrowserRouter([
     {
@@ -16,8 +17,12 @@ const router = createBrowserRouter([
             { path: 'browse', element: <BrowsePage /> },
             { path: 'login', element: <LoginPage /> },
             { path: 'register', element: <RegisterPage /> },
-            { path: 'about', element: <AboutPage /> },     // 2. Add route
-            { path: 'contact', element: <ContactPage /> }, // 2. Add route
+            { path: 'about', element: <AboutPage /> },
+            { path: 'contact', element: <ContactPage /> },
+            {
+                path: 'products/:id',
+                element: <ProductDetailPage />,
+            },
         ],
     },
 ]);
