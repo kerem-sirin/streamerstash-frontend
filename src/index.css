@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* custom styles */
+@layer base {
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        @apply bg-secondary rounded-lg;
+    }
+    .dark .custom-scrollbar::-webkit-scrollbar-track {
+        @apply bg-dark-secondary;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        @apply bg-primary rounded-lg;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        @apply bg-primary-focus;
+    }
+}
