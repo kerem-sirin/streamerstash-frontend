@@ -1,11 +1,28 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import MainLayout from './layouts/MainLayout';
+import HomePage from './pages/HomePage';
+import BrowsePage from './pages/BrowsePage';
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <MainLayout />,
+        children: [
+            {
+                index: true, // This makes HomePage the default child route for '/'
+                element: <HomePage />,
+            },
+            {
+                path: 'browse',
+                element: <BrowsePage />,
+            },
+            // We will add login, register, and other pages here later
+        ],
+    },
+]);
+
 function App() {
-    return (
-        <div className="bg-slate-900 min-h-screen flex items-center justify-center">
-            <h1 className="text-4xl font-bold text-white">
-                Hello, StreamerStash Frontend!
-            </h1>
-        </div>
-    )
+    return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;
