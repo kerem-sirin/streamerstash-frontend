@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
 import BrowsePage from './pages/BrowsePage';
+import LoginPage from './pages/LoginPage'; // Import LoginPage
+import RegisterPage from './pages/RegisterPage'; // Import RegisterPage
 
 const router = createBrowserRouter([
     {
@@ -9,14 +11,21 @@ const router = createBrowserRouter([
         element: <MainLayout />,
         children: [
             {
-                index: true, // This makes HomePage the default child route for '/'
+                index: true,
                 element: <HomePage />,
             },
             {
                 path: 'browse',
                 element: <BrowsePage />,
             },
-            // We will add login, register, and other pages here later
+            {
+                path: 'login', // Add login route
+                element: <LoginPage />,
+            },
+            {
+                path: 'register', // Add register route
+                element: <RegisterPage />,
+            },
         ],
     },
 ]);
