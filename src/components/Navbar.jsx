@@ -12,14 +12,14 @@ const Navbar = () => {
     };
 
     return (
-        <header className="bg-white dark:bg-slate-800 shadow">
+        <header className="bg-white dark:bg-dark-primary shadow">
             <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-                <Link to="/" className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+                <Link to="/" className="text-2xl font-bold text-primary">
                     StreamerStash
                 </Link>
                 <div className="flex items-center space-x-6">
-                    <Link to="/" className="text-gray-600 dark:text-gray-300 hover:text-purple-600">Home</Link>
-                    <Link to="/browse" className="text-gray-600 dark:text-gray-300 hover:text-purple-600">Browse</Link>
+                    <Link to="/" className="text-gray-600 dark:text-gray-300 hover:text-primary">Home</Link>
+                    <Link to="/browse" className="text-gray-600 dark:text-gray-300 hover:text-primary">Browse</Link>
 
                     {user ? (
                         <>
@@ -29,7 +29,7 @@ const Navbar = () => {
                             </button>
                         </>
                     ) : (
-                        <Link to="/login" className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700">
+                        <Link to="/login" className="bg-primary hover:bg-primary-focus text-white px-4 py-2 rounded-md font-semibold">
                             Login
                         </Link>
                     )}
