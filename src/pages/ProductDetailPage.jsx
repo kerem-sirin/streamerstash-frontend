@@ -1,12 +1,18 @@
 ﻿import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate  } from 'react-router-dom';
 import api from '../utils/api';
+import { useAuth } from '../context/AuthContext';
+import { useCart } from '../context/CartContext';
 
 const ProductDetailPage = () => {
     const { id } = useParams(); // Get the product ID from the URL
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+
+    const { user } = useAuth();
+    const { addItemToCart } = useCart();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -26,8 +32,13 @@ const ProductDetailPage = () => {
     }, [id]); // Re-run the effect if the ID in the URL changes
 
     const handleAddToCart = () => {
-        // We will connect this to our cart context later
-        alert(`Added ${product.name} to cart! (Functionality to be added)`);
+        if (!user) {
+            // If user is not logged in, redirect them to the login page
+            navigate('/login');
+            return;
+        }
+        addItemToCart(product.id);
+        alert(`${product.name} has been added to your cart!`);
     };
 
     if (loading) {
