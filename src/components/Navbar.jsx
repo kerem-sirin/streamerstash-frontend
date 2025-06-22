@@ -36,7 +36,9 @@ const Navbar = () => {
 
                     {user ? (
                         <>
-                            <span className="text-gray-800 dark:text-gray-200">Welcome, {user.email}!</span>
+                            <Link to="/dashboard" className="text-gray-600 dark:text-gray-300 hover:text-primary font-semibold">
+                                Dashboard
+                            </Link>
                             <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
                                 Logout
                             </button>

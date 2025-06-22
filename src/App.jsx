@@ -10,34 +10,35 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderConfirmationPage from './pages/OrderConfirmationPage';
+import ProtectedRoute from './components/ProtectedRoute';
+import DashboardPage from './pages/DashboardPage';
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout />,
         children: [
+            // --- Public Routes ---
             { index: true, element: <HomePage /> },
             { path: 'browse', element: <BrowsePage /> },
             { path: 'login', element: <LoginPage /> },
             { path: 'register', element: <RegisterPage /> },
             { path: 'about', element: <AboutPage /> },
             { path: 'contact', element: <ContactPage /> },
+            { path: 'products/:id', element: <ProductDetailPage /> },
+            { path: 'checkout/:orderId', element: <CheckoutPage /> },
+            { path: 'order-confirmation', element: <OrderConfirmationPage /> },
+            { path: 'cart', element: <CartPage /> },
+
+            // --- Protected Routes ---
             {
-                path: 'products/:id',
-                element: <ProductDetailPage />,
-            },
-            {
-                path: 'cart',
-                element: <CartPage />,
-            },
-            {
-                path: 'checkout/:orderId', // Change route to be dynamic
-                element: <CheckoutPage />,
-            },
-            {
-                path: 'order-confirmation',
-                element: <OrderConfirmationPage />,
-            },
+                path: 'dashboard',
+                element: <ProtectedRoute />, // 3. Use ProtectedRoute as the parent
+                children: [
+                    { index: true, element: <DashboardPage /> },
+                    // We will add other dashboard pages here later (e.g., 'orders', 'downloads')
+                ]
+            }
         ],
     },
 ]);
