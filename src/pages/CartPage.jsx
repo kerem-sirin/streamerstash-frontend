@@ -34,11 +34,19 @@ const CartPage = () => {
 
     const handleProceedToCheckout = async () => {
         try {
-            await api.post('/orders');
-            alert('Order created successfully! Proceeding to payment...');
-            clearCart();
-            // In a real app, you would redirect to a checkout page with the new order ID.
-            navigate('/');
+            // Create the order first
+            const res = await api.post('/orders');
+            const newOrder = res.data;
+
+            clearCart(); // Clear the cart context
+
+            // Navigate to the checkout page with the orderId in the URL
+            navigate(`/checkout/${newOrder.id}`, {
+                // We still pass totalAmount in state for display purposes
+                state: {
+                    totalAmount: newOrder.totalAmount
+                }
+            });
         } catch (err) {
             console.error("Error creating order:", err);
             alert('Failed to create order. Please try again.');
