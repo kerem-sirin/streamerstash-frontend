@@ -8,6 +8,8 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
+import OrderConfirmationPage from './pages/OrderConfirmationPage';
 
 const router = createBrowserRouter([
     {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
             {
                 path: 'cart',
                 element: <CartPage />,
+            },
+            {
+                path: 'checkout/:orderId', // Change route to be dynamic
+                element: <CheckoutPage />,
+            },
+            {
+                path: 'order-confirmation',
+                element: <OrderConfirmationPage />,
             },
         ],
     },
